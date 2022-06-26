@@ -81,13 +81,14 @@ function checkConfirmPassword(event) {
 }
 
 
-function checkForm() {
+function checkForm(event) {
     // Controlla consenso dati personali, che i campi siano pieni e che non siano false
     if(document.querySelector('.allow input').checked && Object.keys(formStatus).length === 7 && !Object.values(formStatus).includes(false)){
         document.getElementById('submit').disabled = false;
     }
     else{
         document.getElementById('submit').disabled = true;
+        event.preventDefault();
     }
 }
 
@@ -99,4 +100,4 @@ document.querySelector('.email input').addEventListener('blur', checkEmail);
 document.querySelector('.password input').addEventListener('blur', checkPassword);
 document.querySelector('.confirm_password input').addEventListener('blur', checkConfirmPassword);
 document.querySelector('.allow input').addEventListener('change', checkForm);
-document.querySelector('.submit input').addEventListener('change', checkForm);
+document.querySelector('.submit input').addEventListener('click', checkForm);
